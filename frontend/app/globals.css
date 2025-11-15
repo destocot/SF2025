@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --color-red: oklch(62.793% 0.25768 29.223);
+  --color-black: oklch(34.458% 0.00004 271.152);
+  --color-grey: oklch(34.846% 0.00004 271.152);
+  --color-gray: var(--color-grey);
+  --color-border: var(--color-black);
+  --color-lightGrey: oklch(90.975% 0.0001 271.152);
+  --color-lightGray: var(--color-lightGrey);
+  --offWhite: #ededed;
+  --maxWidth: 1000px;
+  --bs: 0 12px 24px 0 rgba(0, 0, 0, 0.09);
+}
+
+@utility container {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply text-[10px];
+  }
+
+  body {
+    @apply text-[1.5rem] leading-loose;
+  }
+
+  a {
+    @apply text-black;
+
+    &:hover {
+      @apply underline;
+    }
+  }
+}

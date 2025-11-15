@@ -1,0 +1,14 @@
+backend/dev.db
+backend/.keystone/admin/.next/
+frontend/.next/
+node_modules/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+
+# Optional
+.env
+
