@@ -8,7 +8,7 @@
   --color-border: var(--color-black);
   --color-lightGrey: oklch(90.975% 0.0001 271.152);
   --color-lightGray: var(--color-lightGrey);
-  --offWhite: #ededed;
+  --color-offWhite: #ededed;
   --maxWidth: 1000px;
   --bs: 0 12px 24px 0 rgba(0, 0, 0, 0.09);
 }

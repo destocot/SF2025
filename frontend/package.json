@@ -9,6 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@apollo/client": "^4.0.9",
+    "apollo-upload-client": "^19.0.0",
+    "graphql": "^16.12.0",
     "next": "16.0.1",
     "nextjs-toploader": "^3.9.17",
     "react": "19.2.0",
@@ -16,6 +19,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/apollo-upload-client": "^19.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -9,6 +9,6 @@
     "moduleResolution": "node16",
     "outDir": "dist"
   },
-  "include": ["src", "keystone.ts"],
+  "include": ["keystone.ts", "seed-data"],
   "exclude": ["node_modules"]
 }

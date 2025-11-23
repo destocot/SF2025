@@ -3,6 +3,7 @@ import LocalFont from "next/font/local"
 import "./globals.css"
 import { Header } from "@/components/header"
 import { TopLoader } from "@/components/top-loader"
+import { ApolloProvider } from "@/components/apollo-provider"
 
 const radnika = LocalFont({
   src: "../public/radnikanext-medium.woff2",
@@ -23,11 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${radnika.className} antialiased`}>
-        <TopLoader />
+        <ApolloProvider>
+          <TopLoader />
 
-        <Header />
+          <Header />
 
-        <div className="container">{children}</div>
+          <div className="container">{children}</div>
+        </ApolloProvider>
       </body>
     </html>
   )

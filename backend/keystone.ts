@@ -1,9 +1,26 @@
 import "dotenv/config";
 import { config, list } from "@keystone-6/core";
-import { text, password, select, integer } from "@keystone-6/core/fields";
+import {
+  text,
+  password,
+  select,
+  integer,
+  relationship,
+  image,
+} from "@keystone-6/core/fields";
 import { allowAll } from "@keystone-6/core/access";
 import { createAuth } from "@keystone-6/auth";
 import { statelessSessions } from "@keystone-6/core/session";
+import { cloudinaryImage } from "@keystone-6/cloudinary";
+import { v2 as cloudinary } from "cloudinary";
+import { insertSeedData } from "./seed-data";
+
+function timestamp() {
+  // sometime in the last 30 days
+  const stampy =
+    Date.now() - Math.floor(Math.random() * 1000 * 60 * 60 * 24 * 30);
+  return new Date(stampy).toISOString();
+}
 
 const session = statelessSessions({
   maxAge: 60 * 60 * 24 * 30,
@@ -54,7 +71,32 @@ const lists = {
         },
       }),
       price: integer(),
-      // photo
+      photo: relationship({
+        ref: "ProductImage.product",
+        ui: {
+          displayMode: "cards",
+          cardFields: ["image", "altText"],
+          inlineCreate: { fields: ["image", "altText"] },
+          inlineEdit: { fields: ["image", "altText"] },
+          linkToItem: true,
+        },
+      }),
+    },
+  }),
+  ProductImage: list({
+    access: allowAll,
+    fields: {
+      image: cloudinaryImage({
+        label: "Source",
+        cloudinary: {
+          cloudName: `${process.env.CLOUDINARY_CLOUD_NAME}`,
+          apiKey: `${process.env.CLOUDINARY_API_KEY}`,
+          apiSecret: `${process.env.CLOUDINARY_API_SECRET}`,
+          folder: `${process.env.CLOUDINARY_API_FOLDER}`,
+        },
+      }),
+      altText: text(),
+      product: relationship({ ref: "Product.photo" }),
     },
   }),
 };
@@ -64,6 +106,11 @@ export default config(
     db: {
       provider: "sqlite",
       url: `${process.env.DATABASE_URL}`,
+      onConnect: async (ctx) => {
+        if (process.argv.includes("--seed-data")) {
+          await insertSeedData(ctx);
+        }
+      },
     },
     server: {
       cors: { origin: [process.env.FRONTEND_URL], credentials: true },
