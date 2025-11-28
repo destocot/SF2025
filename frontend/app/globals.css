@@ -11,6 +11,20 @@
   --color-offWhite: #ededed;
   --maxWidth: 1000px;
   --bs: 0 12px 24px 0 rgba(0, 0, 0, 0.09);
+
+  --animate-loading: loading 0.5s linear infinite;
+
+  @keyframes loading {
+    from {
+      background-position: 0 0;
+      /* rotate: 0; */
+    }
+
+    to {
+      background-position: 100% 100%;
+      /* rotate: 360deg; */
+    }
+  }
 }
 
 @utility container {
@@ -25,7 +39,7 @@
   }
 
   html {
-    @apply text-[10px];
+    @apply text-[62.5%];
   }
 
   body {
