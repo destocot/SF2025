@@ -36,6 +36,9 @@ function createClient() {
       new UploadHttpLink({
         uri: ENDPOINT,
         fetchOptions: { credentials: "include" },
+        headers: {
+          "apollo-require-preflight": "true",
+        },
       }),
     ]),
     cache: new InMemoryCache(),

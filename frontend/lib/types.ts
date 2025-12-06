@@ -11,5 +11,6 @@ export interface TProduct {
       __typename: "CloudinaryImage_File"
       publicUrlTransformed: string
     }
+    altText: string
   }
 }

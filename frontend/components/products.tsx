@@ -5,7 +5,7 @@ import { gql, TypedDocumentNode } from "@apollo/client"
 import { useQuery } from "@apollo/client/react"
 import { Product } from "./product"
 
-const ALL_PRODUCTS_QUERY: TypedDocumentNode<
+export const ALL_PRODUCTS_QUERY: TypedDocumentNode<
   { products: Array<TProduct> },
   Record<string, never>
 > = gql`
