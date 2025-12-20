@@ -5,7 +5,6 @@ import { gql, TypedDocumentNode } from "@apollo/client"
 import { useQuery } from "@apollo/client/react"
 import { ErrorMessage } from "./error-message"
 import { notFound } from "next/navigation"
-import { Metadata } from "next"
 
 const SINGLE_PRODUCT_QUERY: TypedDocumentNode<{
   product: TProduct
@@ -44,10 +43,10 @@ export const SingleProduct = ({ productId }: SingleProductProps) => {
   const product = data.product
 
   return (
-    <div className="bg-red grid auto-cols-[1fr] grid-flow-col min-h-[800px] max-w-[--maxWidth] gap-8">
+    <div className="grid auto-cols-[1fr] grid-flow-col min-h-[800px items-start max-w-[--maxWidth] gap-8">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        className="w-full  object-contain"
+        className="w-full object-contain"
         src={product.photo.image.publicUrlTransformed}
         alt={product.photo.altText}
       />

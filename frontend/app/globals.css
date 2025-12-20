@@ -53,4 +53,19 @@
       @apply underline;
     }
   }
+
+  .product__form {
+    label {
+      @apply block mb-4;
+    }
+
+    input,
+    textarea {
+      @apply w-full p-2 text-[1rem] border focus:outline-0 focus:border-red;
+    }
+
+    button {
+      @apply w-auto bg-red mr-[0.25em] my-[0.25em] text-white border-0 text-[2rem] font-semibold py-2 px-[1.2rem];
+    }
+  }
 }

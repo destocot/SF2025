@@ -18,7 +18,7 @@ export const Header = () => {
         <Nav />
       </div>
 
-      <div className="grid grid-cols-[1fr_auto] border-b">
+      <div className="grid grid-cols-[1fr_auto] border-b py-4">
         <p>Search</p>
       </div>
     </header>

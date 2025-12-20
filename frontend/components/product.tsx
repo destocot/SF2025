@@ -1,6 +1,7 @@
 import type { TProduct } from "@/lib/types"
 import { formatMoney } from "@/lib/utils"
 import Link from "next/link"
+import { DeleteProduct } from "@/components/delete-product"
 
 interface ProductProps {
   product: TProduct
@@ -26,8 +27,14 @@ export const Product = ({ product }: ProductProps) => {
       <span className="bg-red rotate-3 text-white font-semibold p-[5px] leading-none text-[3rem] inline-block absolute top-[-3px] right-[-3px]">
         {formatMoney(product.price)}
       </span>
-      <p>{product.description}</p>
-      {/* TODO: Add buttons to edit and delete item */}
+      <p className="p-2">{product.description}</p>
+
+      <div className="grid w-full border border-lightGrey grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-px bg-lightGrey">
+        <Link href={`/update?id=${product.id}`} className="bg-white px-2">
+          Edit ✏️
+        </Link>
+        <DeleteProduct productId={product.id}>Delete</DeleteProduct>
+      </div>
     </div>
   )
 }
